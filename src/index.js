@@ -6,14 +6,13 @@ app.use(express.json());
 const palavraChave = "importante";
 
 const funcoes = {
-    ObservacaoCriada: (observacao) => {
-        observacao.status =
-            observacao.texto.includes(palavraChave) ?
+    ClienteCriado: (cliente) => {
+        cliente.status = cliente.idade >= 60 ?
             "importante" :
             "comum";
         axios.post('http://localhost:10000/eventos', {
-            tipo: "ObservacaoClassificada",
-            dados: observacao,
+            tipo: "ClienteClassificada",
+            dados: cliente,
         });
     },
 };
